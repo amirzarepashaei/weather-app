@@ -1,0 +1,131 @@
+/*@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+/*@import url('https://fonts.googleapis.com/icon?family=Material+Icons');*/
+
+body {
+    font-family: "Roboto", serif;
+}
+
+.wrapper {
+    background: linear-gradient(to right, rgb(251,120,110), rgb(252,130,109));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    height: 71vh;
+    background: #fff;
+    box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
+    width: 70%;
+    margin: 0 auto;
+}
+
+.form-container {
+    padding-top: 100px;
+}
+
+input[type="text"] {
+    background-color: transparent;
+    border: 0;
+    border-bottom: solid 1px #000000;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 4px;
+    color: #000 !important;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+input[type="text"] {
+    outline: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #fff inset;
+    -webkit-text-fill-color: #000 !important;
+}
+
+.weather__info {
+    width: 60%;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 2px;
+}
+
+.weather__key {
+    color: #f16051;
+    border-bottom: solid 2px rgba(255,255,255,0.06);
+    padding: 20px 0 20px 0;
+    font-weight: 400;
+}
+
+.weather__key:last-child {
+    border: 0;
+}
+
+.weather__value {
+    color: rgb(77,103,114);
+    font-weight: 500;
+    font-size: xx-large;
+}
+
+.weather__error {
+    color: #f16051;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 200;
+}
+
+iconButton{
+    padding: 10px;
+}
+
+#cityPaddingTop{
+    padding-top: 5px;
+}
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 80px;
+    height: 30px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background: #bada55;
+}
+
+input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+/*label:active:after {*/
+    /*width: 130px;*/
+/*}*/
