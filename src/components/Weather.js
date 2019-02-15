@@ -5,40 +5,42 @@ const Weather = (props) => (
                 {
                     props.city && <span className='weather__value'>{ props.city }</span>
                 }{
-                    props.date && <p><span className='weather__ds'>{ props.date }</span></p>
+                    props.date && <span >{ props.date }</span>
                 }{
-                    props.date1 && <p><span className='weather__ds'>{ props.date1 }</span></p>
+                    props.date1 && <span >{ props.date1 }</span>
                 }{
-                    props.date2 && <p><span className='weather__ds'>{ props.date2 }</span></p>
+                    props.date2 && <span >{ props.date2 }</span>
                 }{
-                    props.date3 && <p><span className='weather__ds'>{ props.date3 }</span></p>
+                    props.date3 && <span >{ props.date3 }</span>
                 }{
-                    props.date4 && <p><span className='weather__ds'>{ props.date4 }</span></p>
+                    props.date4 && <span >{ props.date4 }</span>
                 }{
-                    props.date5 && <p><span className='weather__ds'>{ props.date5 }</span></p>
+                    props.date5 && <span >{ props.date5 }</span>
                 }{
-                    props.date6 && <p><span className='weather__ds'>{ props.date6 }</span></p>
+                props.description && <p><span className='weather__ds'>{ props.description }</span></p>
                 }{
-                    props.description && <p><span className='weather__ds'>{ props.description }</span></p>
+                props.temperature &&  <span >{ props.temperature }</span>
                 }{
-                    props.temperature && <p> <span className='weather__temp'>{ props.temperature }</span><span> °C</span></p>
+                    props.temperature1 &&  <span >{ props.temperature1 }</span>
                 }{
-                    props.temperature1 && <p> <span className='weather__temp'>{ props.temperature1 }</span><span> °C</span></p>
+                    props.temperature2 &&  <span >{ props.temperature2 }</span>
                 }{
-                    props.temperature2 && <p> <span className='weather__temp'>{ props.temperature2 }</span><span> °C</span></p>
+                    props.temperature3 &&  <span >{ props.temperature3 }</span>
                 }{
-                    props.temperature3 && <p> <span className='weather__temp'>{ props.temperature3 }</span><span> °C</span></p>
+                    props.temperature4 &&  <span >{ props.temperature4 }</span>
                 }{
-                    props.temperature4 && <p> <span className='weather__temp'>{ props.temperature4 }</span><span> °C</span></p>
+                    props.temperature5 &&  <span >{ props.temperature5 }</span>
                 }{
-                    props.temperature5 && <p> <span className='weather__temp'>{ props.temperature5 }</span><span> °C</span></p>
+                    props.datePart1 &&  <span >{ props.datePart1 }</span>
                 }{
-                    props.temperature6 && <p> <span className='weather__temp'>{ props.temperature6 }</span><span> °C</span></p>
-                }
-                {
+                    props.datePart2 &&  <span >{ props.datePart2 }</span>
+                }{
+                    props.datePart3 &&  <span >{ props.datePart3 }</span>
+                }{
+                    props.datePart4 &&  <span >{ props.datePart4 }</span>
+                }{
                     props.error && <p className='weather__error'>{ props.error }</p>
                 }
-
             </div>
 );
 

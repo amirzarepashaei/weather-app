@@ -1,11 +1,10 @@
 /*@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
-/*@import url('https://fonts.googleapis.com/icon?family=Material+Icons');*/
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 body {
     font-family: "Roboto", serif;
 }
-
 .wrapper {
     background: linear-gradient(to right, rgb(251,120,110), rgb(252,130,109));
     height: 100vh;
@@ -13,19 +12,143 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 .main {
-    height: 71vh;
+    height: 69vh;
     background: #fff;
     box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
     width: 70%;
     margin: 0 auto;
 }
-
 .form-container {
     padding-top: 100px;
 }
 
+#firstRow{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.weather__value {
+    color: #4d6772;
+    font-weight: 500;
+    font-size: xx-large;
+}
+.weather__dt {
+    color: #4d6772;
+    font-weight: 200;
+    font-size: xx-large;
+}
+.weather__dtsub {
+    color: #4d6772;
+    font-weight: 400;
+    font-size: small;
+}
+.weather__ds {
+    color: #4d6772;
+    font-weight: 100;
+    font-size: xx-large;
+}
+.weather__temp{
+    color: #e39684;
+    font-size: 80px;
+    font-weight: 500;
+}
+.weather__tempsub{
+    font-size: smaller;
+    font-weight: 100;
+}
+.weather__error {
+    color: #f16051;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 200;
+}
+.degree__CF{
+    margin-top: -120px;
+    margin-right: 285px;
+    float: right;
+}
+.degree__CF__day{
+    margin-top: -27px;
+    margin-right: 10px;
+    padding-left: 20px;
+    float: right;
+}
+.degree__CF__forecast{
+    margin-top: -19px;
+    margin-right: 94px;
+    float: right;
+}
+.weatherSign{
+    padding-right: 115px;
+    margin-top: -105px;
+    float: right;
+}
+.weatherSignSub{
+    font-size: 35px;
+    color: #4d6772;
+    padding-left: 5px;
+}
+.pdlf{
+    padding-left: 10px;
+}
+.day__time{
+    color: #d8968d;
+    font-size: large;
+    font-weight: 100;
+}
+#searchButton{
+    margin-bottom: 30px;
+    right: 40px;
+}
+#cp{
+    color: #4d6772;
+}
+#btn_cp{
+    color: #4d6772;
+    background:none!important;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    border-bottom:1px dotted #444;
+    cursor: pointer;
+}
+.inputCity{
+    display: flex;
+    margin-left: 50px;
+}
+.containerMargin{
+    margin-top: 70px;
+}
+#inputCity{
+    margin-right: 0px;
+}
+iconButton{
+    padding: 10px;
+}
+.topSpace{
+    margin-top: 10px;
+}
+.fl{
+    float: right;
+}
+#morning{
+    margin-right: 280px;
+}
+#day{
+    margin-right: 280px;
+}
+#evening{
+    margin-right: 280px;
+}
+#night{
+    margin-right: 280px;
+}
+#cityPaddingTop{
+    padding-top: 5px;
+}
+#MuiThemeProvider{
+    display: none;
+}
 input[type="text"] {
     background-color: transparent;
     border: 0;
@@ -40,92 +163,47 @@ input[type="text"] {
     margin-right: 20px;
     font-size: 20px;
 }
-
 input[type="text"] {
     outline: none;
 }
-
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px #fff inset;
     -webkit-text-fill-color: #000 !important;
 }
-
-.weather__info {
-    width: 60%;
-    font-size: 20px;
-    font-weight: 200;
-    letter-spacing: 2px;
-}
-
-.weather__key {
-    color: #f16051;
-    border-bottom: solid 2px rgba(255,255,255,0.06);
-    padding: 20px 0 20px 0;
-    font-weight: 400;
-}
-
-.weather__key:last-child {
-    border: 0;
-}
-
-.weather__value {
-    color: rgb(77,103,114);
-    font-weight: 500;
-    font-size: xx-large;
-}
-
-.weather__error {
-    color: #f16051;
-    font-size: 20px;
-    letter-spacing: 1px;
-    font-weight: 200;
-}
-
-iconButton{
-    padding: 10px;
-}
-
-#cityPaddingTop{
-    padding-top: 5px;
+input[type=text] {
+    font-size: xx-large;;
 }
 input[type=checkbox] {
     height: 0;
     width: 0;
     visibility: hidden;
 }
-
 label {
     cursor: pointer;
-    text-indent: -9999px;
+    /*text-indent: -9999px;*/
     width: 80px;
     height: 30px;
-    background: grey;
+    border: 1px solid #4d6772;
     display: block;
     border-radius: 100px;
     position: relative;
 }
-
 label:after {
     content: '';
     position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 20px;
-    height: 20px;
+    top: 2px;
+    right: 5px;
+    width: 30px;
+    height: 25px;
     background: #fff;
+    border: 1px solid #4d6772;
     border-radius: 90px;
     transition: 0.3s;
 }
-
-input:checked + label {
-    background: #bada55;
-}
-
 input:checked + label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
+    right: calc(90% + 5px);
+    transform: translateX(100%);
 }
+@media only screen and (max-width: 1340px) {
 
-/*label:active:after {*/
-    /*width: 130px;*/
-/*}*/
+}

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import InputBase from '@material-ui/core/InputBase';
 
 class Form extends Component {
     render() {
@@ -13,24 +10,27 @@ class Form extends Component {
                 <div className="App" id="mainForm">
                     <div className="wrapper">
                         <div className="main">
-                            <div className="container">
+                            <div className="container containerMargin">
                                 <div className="row my-auto">
                                     <div className="col-sm-6 offset-sm-3 text-center">
-                                        <form action="/forecast" onSubmit={this.props.getWeather} className="form-container">
+                                        <form action="/forecast" onSubmit={this.props.getWeather} id="form" className="form-container">
                                             <div className="inputCity">
-                                                <InputBase
+                                                <input
                                                     type="text"
                                                     name="city"
                                                     placeholder="City"
+                                                    id="inputCity"
+                                                    // value={this.props.city}
                                                 />
-                                                <IconButton className="iconButton" aria-label="Search" type="submit">
+                                                <IconButton className="iconButton" id="searchButton" aria-label="Search" type="submit">
                                                     <SearchIcon />
                                                 </IconButton>
                                             </div>
-                                            <p>or</p>
-                                            <p>use my current position</p>
+                                            <span id="cp">
+                                                <p>or</p>
+                                            <p>use my <button id="btn_cp" onSubmit={this.props.getWeather}>current position</button></p>
+                                            </span>
                                         </form >
-
                                     </div>
                                 </div>
                             </div>
