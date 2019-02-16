@@ -98,9 +98,7 @@ class Forecast extends Component {
         let celsius = "°C";
         let fahrenheit = "°F";
         let city = e.target.elements.city.value;
-        // localStorage.setItem("city", city);
-        let api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&mode=json
-        &appid=${API_KEY}&units=metric`);
+        let api_call = "";
         if (navigator.geolocation){
             navigator.geolocation.watchPosition(function(position){
                 lat = position.coords.latitude.toFixed(1);
@@ -112,13 +110,15 @@ class Forecast extends Component {
         }
         if ($("#switch").is(":checked")){
             api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&mode=json&appid=${API_KEY}&units=imperial`);
-
         } else {
             api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&mode=json&appid=${API_KEY}&units=metric`);
-
         }
         if (city === ""){
-            api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`) ;
+            try {
+                api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`) ;
+            } catch (e) {
+                console.log(e);
+            }
         }
         const data = await api_call.json();
         $("#switch").on("change", function(){
@@ -126,58 +126,68 @@ class Forecast extends Component {
                 $(".degree__CF").text(fahrenheit);
                 $(".degree__CF__day").text(fahrenheit);
                 $(".degree__CF__forecast").text(fahrenheit);
-                api_call = $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" +city+"&mode=json&appid="+API_KEY+"&units=imperial",function (data){
-                    let temp = (data.list[0].main.temp).toFixed();
-                    let temp0 = (data.list[0].main.temp).toFixed();
-                    let temp1 = (data.list[8].main.temp).toFixed();
-                    let temp2 = (data.list[16].main.temp).toFixed();
-                    let temp3 = (data.list[24].main.temp).toFixed();
-                    let temp4 = (data.list[32].main.temp).toFixed();
-                    let temp5 = (data.list[39].main.temp).toFixed();
-                    let datePart1 = (data.list[6].main.temp).toFixed();
-                    let datePart2 = (data.list[7].main.temp).toFixed();
-                    let datePart3 = (data.list[9].main.temp).toFixed();
-                    let datePart4 = (data.list[10].main.temp).toFixed();
-                    $("#wea__tem").text(temp);
-                    $("#wea__tem0").text(temp0);
-                    $("#wea__tem1").text(temp1);
-                    $("#wea__tem2").text(temp2);
-                    $("#wea__tem3").text(temp3);
-                    $("#wea__tem4").text(temp4);
-                    $("#wea__tem5").text(temp5);
-                    $("#mor__temp").text(datePart1);
-                    $("#day__temp").text(datePart2);
-                    $("#eve__temp").text(datePart3);
-                    $("#nig__temp").text(datePart4);
-                });
+                if (city === ""){
+                    api_call = $.getJSON('https://api.openweathermap.org/data/2.5/forecast?lat='+lat+'&lon='+lon+'&appid='+API_KEY+'&units=imperial') ;
+                    city = data.city.name;
+                } else {
+                    api_call = $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" +city+"&mode=json&appid="+API_KEY+"&units=imperial",function (data){
+                        let temp = (data.list[0].main.temp).toFixed();
+                        let temp0 = (data.list[0].main.temp).toFixed();
+                        let temp1 = (data.list[8].main.temp).toFixed();
+                        let temp2 = (data.list[16].main.temp).toFixed();
+                        let temp3 = (data.list[24].main.temp).toFixed();
+                        let temp4 = (data.list[32].main.temp).toFixed();
+                        let temp5 = (data.list[39].main.temp).toFixed();
+                        let datePart1 = (data.list[6].main.temp).toFixed();
+                        let datePart2 = (data.list[7].main.temp).toFixed();
+                        let datePart3 = (data.list[9].main.temp).toFixed();
+                        let datePart4 = (data.list[10].main.temp).toFixed();
+                        $("#wea__tem").text(temp);
+                        $("#wea__tem0").text(temp0);
+                        $("#wea__tem1").text(temp1);
+                        $("#wea__tem2").text(temp2);
+                        $("#wea__tem3").text(temp3);
+                        $("#wea__tem4").text(temp4);
+                        $("#wea__tem5").text(temp5);
+                        $("#mor__temp").text(datePart1);
+                        $("#day__temp").text(datePart2);
+                        $("#eve__temp").text(datePart3);
+                        $("#nig__temp").text(datePart4);
+                    });
+                }
             } else {
                 $(".degree__CF").text(celsius);
                 $(".degree__CF__day").text(celsius);
                 $(".degree__CF__forecast").text(celsius);
-                api_call = $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" +city+"&mode=json&appid="+API_KEY+"&units=metric",function (data){
-                    let temp = (data.list[0].main.temp).toFixed();
-                    let temp0 = (data.list[0].main.temp).toFixed();
-                    let temp1 = (data.list[8].main.temp).toFixed();
-                    let temp2 = (data.list[16].main.temp).toFixed();
-                    let temp3 = (data.list[24].main.temp).toFixed();
-                    let temp4 = (data.list[32].main.temp).toFixed();
-                    let temp5 = (data.list[39].main.temp).toFixed();
-                    let datePart1 = (data.list[6].main.temp).toFixed();
-                    let datePart2 = (data.list[7].main.temp).toFixed();
-                    let datePart3 = (data.list[9].main.temp).toFixed();
-                    let datePart4 = (data.list[10].main.temp).toFixed();
-                    $("#wea__tem").text(temp);
-                    $("#wea__tem0").text(temp0);
-                    $("#wea__tem1").text(temp1);
-                    $("#wea__tem2").text(temp2);
-                    $("#wea__tem3").text(temp3);
-                    $("#wea__tem4").text(temp4);
-                    $("#wea__tem5").text(temp5);
-                    $("#mor__temp").text(datePart1);
-                    $("#day__temp").text(datePart2);
-                    $("#eve__temp").text(datePart3);
-                    $("#nig__temp").text(datePart4);
-                });
+                if (city === ""){
+                    api_call = $.getJSON('https://api.openweathermap.org/data/2.5/forecast?lat='+lat+'&lon='+lon+'&appid='+API_KEY+'&units=metric') ;
+                    city = data.city.name;
+                } else {
+                    api_call = $.getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" +city+"&mode=json&appid="+API_KEY+"&units=metric",function (data){
+                        let temp = (data.list[0].main.temp).toFixed();
+                        let temp0 = (data.list[0].main.temp).toFixed();
+                        let temp1 = (data.list[8].main.temp).toFixed();
+                        let temp2 = (data.list[16].main.temp).toFixed();
+                        let temp3 = (data.list[24].main.temp).toFixed();
+                        let temp4 = (data.list[32].main.temp).toFixed();
+                        let temp5 = (data.list[39].main.temp).toFixed();
+                        let datePart1 = (data.list[6].main.temp).toFixed();
+                        let datePart2 = (data.list[7].main.temp).toFixed();
+                        let datePart3 = (data.list[9].main.temp).toFixed();
+                        let datePart4 = (data.list[10].main.temp).toFixed();
+                        $("#wea__tem").text(temp);
+                        $("#wea__tem0").text(temp0);
+                        $("#wea__tem1").text(temp1);
+                        $("#wea__tem2").text(temp2);
+                        $("#wea__tem3").text(temp3);
+                        $("#wea__tem4").text(temp4);
+                        $("#wea__tem5").text(temp5);
+                        $("#mor__temp").text(datePart1);
+                        $("#day__temp").text(datePart2);
+                        $("#eve__temp").text(datePart3);
+                        $("#nig__temp").text(datePart4);
+                    });
+                }
             }
         });
         let code = data.list[0].weather[0].id;
@@ -259,8 +269,8 @@ class Forecast extends Component {
                         <div className="wrapper">
                             <div className="main">
                                 <div className="container">
-                                    <div className="row" id="firstRow">
-                                        <div className="col-md-1">
+                                    <div className="row" id="first__row">
+                                        <div className="col-lg-1 col-md-1 col-sm-2">
                                             <form action="/forecast">
                                                 <div >
                                                     <IconButton className="iconButton" aria-label="Search" type="submit">
@@ -269,14 +279,14 @@ class Forecast extends Component {
                                                 </div>
                                             </form>
                                         </div>
-                                        <div className="col-md-7" id="cityPaddingTop">
+                                        <div className="col-lg-7 col-md-10 col-sm-9 col-6" id="city__padding__top">
                                             <span id="cityName">
                                                 <Weather
                                                     city={ this.state.city }
                                                 />
                                             </span>
                                         </div>
-                                        <div className="col-md-3 ">
+                                        <div className="col-lg-3 col-md-1 col-sm-1 col-6 switch__margin">
                                             <div className="float-right">
                                                 <input type="checkbox" id="switch"  />
                                                 <label htmlFor="switch" >&nbsp;&nbsp;°C &emsp; °F</label>
@@ -284,7 +294,7 @@ class Forecast extends Component {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-md-10">
+                                        <div className="col-lg-10">
                                             <span className='weather__dt'>
                                                 <Weather
                                                     date={ this.state.date }
@@ -294,18 +304,18 @@ class Forecast extends Component {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col-md-6">
-                                            <span className="weather__temp" >
+                                        <div className="col-lg-6" id="today__section">
+                                            <span className="weather__temp fl" id="today__temp" >
                                                 <Weather
                                                     temperature={ this.state.temperature && <span id="wea__tem"> {this.state.temperature}
                                                           </span>}
                                                 />
-                                                <span className="degree__CF">°C</span>
-                                                <i className="icon weatherSign" ></i>
+                                                <span className="degree__CF fl">°C</span>
+                                                <i className="icon weather__sign" ></i>
                                             </span>
                                         </div>
-                                        <div className="col-md-6 day__time">
-                                            <div className="col">
+                                        <div className="col-lg-6 day__time">
+                                            <div className="col" id="day__time">
                                                 <span>Morning</span>
                                                     <span className="fl" id="morning">
                                                         <Weather date={this.state.datePart1 && <span id="mor__temp">{this.state.datePart1}
@@ -333,15 +343,15 @@ class Forecast extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="row topSpace">
-                                        <div className="col-md-2">
+                                    <div className="row top__space" id="last__for">
+                                        <div className="col-lg-2 col-md-4 col-sm-4 col-4">
                                             <span className="weather__dtsub">
                                                 <Weather
                                                     date={ this.state.date0 }
                                                 />
                                             </span><br/>
                                             <p>
-                                                <i className="icon weatherSignSub"></i>
+                                                <i className="icon weather__sign__sub"></i>
                                             </p>
                                             <span className="weather__tempsub">
                                                 <Weather
@@ -352,14 +362,14 @@ class Forecast extends Component {
                                                 <span className="degree__CF__forecast">°C</span>
                                             </span>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-lg-2 col-md-4 col-sm-4 col-4">
                                             <span className="weather__dtsub">
                                                 <Weather
                                                     date={ this.state.date1 }
                                                 /><br/>
                                             </span>
                                             <p>
-                                                <i className="icon1 weatherSignSub"></i>
+                                                <i className="icon1 weather__sign__sub"></i>
                                             </p>
                                                 <span className="weather__tempsub">
                                                     <Weather
@@ -370,14 +380,14 @@ class Forecast extends Component {
                                                     <span className="degree__CF__forecast">°C</span>
                                                 </span>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-lg-2 col-md-4 col-sm-4 col-4" id="bottom__line">
                                             <span className="weather__dtsub">
                                                 <Weather
                                                     date={ this.state.date2 }
                                                 /><br/>
                                             </span>
                                             <p>
-                                                <i className="icon2 weatherSignSub"></i>
+                                                <i className="icon2 weather__sign__sub"></i>
                                             </p>
                                                 <span className="weather__tempsub">
                                                     <Weather
@@ -388,14 +398,14 @@ class Forecast extends Component {
                                                     <span className="degree__CF__forecast">°C</span>
                                                 </span>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-lg-2 col-md-4 col-sm-4 col-4">
                                             <span className="weather__dtsub">
                                                 <Weather
                                                     date={ this.state.date3 }
                                                 /><br/>
                                             </span>
                                             <p>
-                                                <i className="icon3 weatherSignSub"></i>
+                                                <i className="icon3 weather__sign__sub"></i>
                                             </p>
                                                 <span className="weather__tempsub">
                                                     <Weather
@@ -406,14 +416,14 @@ class Forecast extends Component {
                                                     <span className="degree__CF__forecast">°C</span>
                                                 </span>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-lg-2 col-md-4 col-sm-4 col-4">
                                             <span className="weather__dtsub">
                                                 <Weather
                                                     date={ this.state.date4 }
                                                 /><br/>
                                             </span>
                                             <p>
-                                                <i className="icon4 weatherSignSub"></i>
+                                                <i className="icon4 weather__sign__sub"></i>
                                             </p>
                                                <span className="weather__tempsub">
                                                     <Weather
@@ -424,14 +434,14 @@ class Forecast extends Component {
                                                     <span className="degree__CF__forecast">°C</span>
                                                </span>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-lg-2 col-md-4 col-sm-4 col-4">
                                             <span className="weather__dtsub">
                                                 <Weather
                                                     date={ this.state.date5 }
                                                 /><br/>
                                             </span>
                                             <p>
-                                                <i className="icon5 weatherSignSub"></i>
+                                                <i className="icon5 weather__sign__sub"></i>
                                             </p>
                                             <span className="weather__tempsub">
                                                 <Weather

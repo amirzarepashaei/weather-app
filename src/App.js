@@ -7,7 +7,6 @@ import Error from './components/Error';
 import Forecast from './components/Forecast';
 
 class App extends Component {
-
     render() {
     return (
         <BrowserRouter>
@@ -15,7 +14,6 @@ class App extends Component {
                {/*<Navigation />*/}
                <Switch>
                    <Route path="/" component={Forecast} exact/>
-                   {/*<Route path="/weather" component={Weather}/>*/}
                    <Route path="/forecast" component={Forecast}/>
                    <Route component={Error}/>
                </Switch>

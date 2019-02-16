@@ -10,25 +10,25 @@ class Form extends Component {
                 <div className="App" id="mainForm">
                     <div className="wrapper">
                         <div className="main">
-                            <div className="container containerMargin">
+                            <div className="container container__margin">
                                 <div className="row my-auto">
                                     <div className="col-sm-6 offset-sm-3 text-center">
-                                        <form action="/forecast" onSubmit={this.props.getWeather} id="form" className="form-container">
-                                            <div className="inputCity">
+                                        <form action="/forecast" onSubmit={this.props.getWeather} id="form" className="form__container">
+                                            <div className="input__city">
                                                 <input
                                                     type="text"
                                                     name="city"
                                                     placeholder="City"
-                                                    id="inputCity"
-                                                    // value={this.props.city}
+                                                    id="input__city"
+                                                    autoFocus
                                                 />
-                                                <IconButton className="iconButton" id="searchButton" aria-label="Search" type="submit">
+                                                <IconButton className="icon__button" id="search__button" aria-label="Search" type="submit">
                                                     <SearchIcon />
                                                 </IconButton>
                                             </div>
                                             <span id="cp">
                                                 <p>or</p>
-                                            <p>use my <button id="btn_cp" onSubmit={this.props.getWeather}>current position</button></p>
+                                            <p>use my <button id="btn__cp" onSubmit={this.props.getWeather}>current position</button></p>
                                             </span>
                                         </form >
                                     </div>

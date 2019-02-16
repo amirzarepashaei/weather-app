@@ -6,7 +6,7 @@ body {
     font-family: "Roboto", serif;
 }
 .wrapper {
-    background: linear-gradient(to right, rgb(251,120,110), rgb(252,130,109));
+    background: linear-gradient(to right, #fb786e, #fc826d);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -19,14 +19,10 @@ body {
     width: 70%;
     margin: 0 auto;
 }
-.form-container {
+.form__container {
     padding-top: 100px;
 }
 
-#firstRow{
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
 .weather__value {
     color: #4d6772;
     font-weight: 500;
@@ -47,12 +43,12 @@ body {
     font-weight: 100;
     font-size: xx-large;
 }
-.weather__temp{
+.weather__temp {
     color: #e39684;
     font-size: 80px;
     font-weight: 500;
 }
-.weather__tempsub{
+.weather__tempsub {
     font-size: smaller;
     font-weight: 100;
 }
@@ -62,48 +58,70 @@ body {
     letter-spacing: 1px;
     font-weight: 200;
 }
-.degree__CF{
+.degree__CF {
+    position: absolute;
     margin-top: -120px;
-    margin-right: 285px;
     float: right;
+    padding-left: 80px;
 }
-.degree__CF__day{
+.degree__CF__day {
     margin-top: -27px;
     margin-right: 10px;
     padding-left: 20px;
     float: right;
 }
-.degree__CF__forecast{
+.degree__CF__forecast {
+    position: absolute;
     margin-top: -19px;
-    margin-right: 94px;
+    padding-left: 27px;
     float: right;
 }
-.weatherSign{
-    padding-right: 115px;
+.weather__sign {
+    position: absolute;
+    padding-left: 240px;
     margin-top: -105px;
-    float: right;
+    /*float: right;*/
 }
-.weatherSignSub{
+.weather__sign__sub {
     font-size: 35px;
     color: #4d6772;
     padding-left: 5px;
 }
-.pdlf{
+.pdlf {
     padding-left: 10px;
 }
-.day__time{
+.day__time {
     color: #d8968d;
     font-size: large;
     font-weight: 100;
 }
-#searchButton{
+.input__city {
+    display: flex;
+    margin-left: 50px;
+}
+.container__margin {
+    margin-top: 70px;
+}
+.icon__button {
+    padding: 10px;
+}
+.top__space {
+    margin-top: 20px;
+}
+.fl {
+    float: right;
+}
+.switch__margin {
+    margin-top: -10px;
+}
+#search__button {
     margin-bottom: 30px;
     right: 40px;
 }
-#cp{
+#cp {
     color: #4d6772;
 }
-#btn_cp{
+#btn__cp {
     color: #4d6772;
     background:none!important;
     border:none;
@@ -112,42 +130,41 @@ body {
     border-bottom:1px dotted #444;
     cursor: pointer;
 }
-.inputCity{
-    display: flex;
-    margin-left: 50px;
-}
-.containerMargin{
-    margin-top: 70px;
-}
-#inputCity{
+#input__city {
     margin-right: 0px;
 }
-iconButton{
-    padding: 10px;
+#today__temp {
+    position: absolute;
+    padding-right: 50px;
 }
-.topSpace{
-    margin-top: 10px;
+#morning {
+    position: absolute;
+    padding-left: 40px;
 }
-.fl{
-    float: right;
+#day {
+    position: absolute;
+    padding-left: 75px;
 }
-#morning{
-    margin-right: 280px;
+#evening {
+    position: absolute;
+    padding-left: 44px;
 }
-#day{
-    margin-right: 280px;
+#night {
+    position: absolute;
+    padding-left: 63px;
 }
-#evening{
-    margin-right: 280px;
-}
-#night{
-    margin-right: 280px;
-}
-#cityPaddingTop{
+#city__padding__top {
     padding-top: 5px;
 }
-#MuiThemeProvider{
+#MuiThemeProvider {
     display: none;
+}
+#today__section {
+    margin-bottom: 100px;
+}
+#first__row {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 input[type="text"] {
     background-color: transparent;
@@ -171,7 +188,7 @@ input:-webkit-autofill {
     -webkit-text-fill-color: #000 !important;
 }
 input[type=text] {
-    font-size: xx-large;;
+    font-size: xx-large;
 }
 input[type=checkbox] {
     height: 0;
@@ -180,7 +197,6 @@ input[type=checkbox] {
 }
 label {
     cursor: pointer;
-    /*text-indent: -9999px;*/
     width: 80px;
     height: 30px;
     border: 1px solid #4d6772;
@@ -204,6 +220,51 @@ input:checked + label:after {
     right: calc(90% + 5px);
     transform: translateX(100%);
 }
-@media only screen and (max-width: 1340px) {
-
+@media only screen and (max-width: 575px) {
+    .main {
+        height: 95%;
+    }
+    .switch__margin {
+        margin-top: -70px;
+    }
+    .weather__dt , .weather__ds{
+        font-size: larger;
+    }
+    .weather__temp {
+        font-size: 60px;
+    }
+    .degree__CF {
+        margin-right: 110px;
+        padding-top: 30px;
+        padding-left: 70px;
+    }
+    .degree__CF__forecast {
+        margin-right: 70px;
+    }
+    .weather__sign {
+        padding-right: 0px;
+        padding-top: 30px;
+        padding-left: 170px;
+    }
+    #today__section {
+        margin-bottom: 100px;
+    }
+    #bottom__line {
+        border-bottom: 5px solid transparent;
+    }
+    #day__time {
+        padding-left: 40px;
+    }
+    #last__for {
+        height: 230px;
+        overflow-y: scroll;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .main {
+        height: 95%;
+    }
+    .weather__dt , .weather__ds {
+        font-size: large;
+    }
 }
